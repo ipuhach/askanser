@@ -1,2 +1,1 @@
-# Askanser
-MVC Studying Project. 
+#Askanser boi
