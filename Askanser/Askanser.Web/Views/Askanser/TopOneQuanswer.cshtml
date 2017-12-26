@@ -1,0 +1,11 @@
+﻿@using Askanser.Core.Entities
+
+<div class="container">
+    @{
+        Quanswer q = ViewBag.TopQuanswer as Quanswer;
+
+        <div class="lead">Question: @q.QueText?</div>
+        <div class="lead">Answer: @q.AnsText .</div>
+        <div class="lead right">Score: @q.Score</div>
+    }
+</div>

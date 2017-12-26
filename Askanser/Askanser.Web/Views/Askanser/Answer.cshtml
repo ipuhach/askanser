@@ -1,0 +1,38 @@
+﻿@using Askanser.Web.ViewModels
+@using Askanser.Core.Entities
+
+@model Askanser.Web.ViewModels.AnswerViewModel
+
+@{
+    ViewBag.Title = "Answer";
+}
+
+<div class="container">
+    <section>
+        @using (Html.BeginForm("Answer", "Askanser", FormMethod.Post, new { @class = "form-horizontal", role = "form", RedeemModel = Model }))
+    {
+        @Html.HiddenFor(m => m.Question.Text)
+        @Html.HiddenFor(m => m.Question.Id)
+
+        @Html.AntiForgeryToken()
+
+        <div class="h2">
+            Question:
+            @Html.DisplayFor(m => m.Question.Text)?
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Text, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Text, new { @class = "form-control row" })
+                @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Answer" class="btn btn-default" />
+            </div>
+        </div>
+}
+    </section>
+</div>

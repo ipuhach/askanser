@@ -1,0 +1,29 @@
+﻿@using Askanser.Core.Entities
+@{
+    ViewBag.Title = "Answer";
+}
+
+<div class="container">
+    <h2>
+        Damn son, look at what u can answer...
+    </h2>
+    <a href="/Askanser/Ask" class="btn btn-default">Ask something, I dare you, I double dare you.</a>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th width="20px">Id</th>
+                <th style="max-width:900px;overflow:hidden">Text</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in (ViewBag.Questions as List<Question>))
+            {
+                <tr onclick="window.location='/Askanser/Answer/@x.Id';">
+                    <td width="20px">@x.Id</td>
+                    <td style="max-width:900px;overflow:hidden">@x.Text</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

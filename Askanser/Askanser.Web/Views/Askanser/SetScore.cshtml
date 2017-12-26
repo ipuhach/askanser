@@ -1,0 +1,46 @@
+﻿@using Askanser.Web.ViewModels
+@using Askanser.Core.Entities
+
+@model Askanser.Web.ViewModels.QuanswerViewModel
+
+@{
+    ViewBag.Title = "Set Score";
+}
+
+<div class="container">
+    <section>
+        @using (Html.BeginForm("SetScore", "Askanser", FormMethod.Post, new { @class = "form-horizontal", role = "form", RedeemModel = Model }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(m => m.Quanswer.AnsId)
+        @Html.HiddenFor(m => m.Quanswer.QueText)
+        @Html.HiddenFor(m => m.Quanswer.AnsText)
+        @Html.HiddenFor(m => m.Quanswer.Score)
+
+        <div class="h2">
+            Question:
+            @Html.DisplayFor(m => m.Quanswer.QueText)?
+        </div>
+
+        <div class="h2">
+            Answer:
+            @Html.DisplayFor(m => m.Quanswer.AnsText) .
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Score, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Score, new { @class = "form-control row" })
+                @Html.ValidationMessageFor(m => m.Score, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Answer" class="btn btn-default" />
+            </div>
+        </div>
+}
+    </section>
+</div>

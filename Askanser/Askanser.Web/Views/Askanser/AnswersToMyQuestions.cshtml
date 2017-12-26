@@ -1,0 +1,40 @@
+﻿@using Askanser.Core.Entities
+@{
+    ViewBag.Title = "Answers";
+}
+
+<div class="container">
+    <h2>
+        Answers to my questions
+    </h2>
+    <a href="/Askanser/MyAnswers" class="btn btn-default">Lets see if someone scored your answers</a>
+    @{
+        if ((ViewBag.Quanswers as List<Quanswer>).Count == 0)
+        {
+            <div class="h3">Looks like nobody has answered your questions yet. You can refresh the page, but I doubt that it'll work. Go ahead, get your self a cup of coffee, and come in 5 minutes </div>
+            <div style="font-size: 10px;color: lightgray">ptsss, you can register as another user and answer your own questions and act like it's somebody else..</div>
+
+        }
+        else
+        {
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="overflow:hidden">Id</th>
+                    <th style="overflow:hidden">Text</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in (ViewBag.Quanswers as List<Quanswer>))
+                {
+                    <tr onclick="window.location='/Askanser/SetScore/@x.AnsId';">
+                        <td style="overflow:hidden">@x.QueText</td>
+                        <td style="overflow:hidden">@x.AnsText</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    }
+        </div>
